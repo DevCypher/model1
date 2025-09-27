@@ -1,0 +1,5 @@
+train: C:\Jeet\SIH\leaf-dataset\train\images
+val: C:\Jeet\SIH\leaf-dataset\val\images
+
+nc: 2
+names: ['healthy_leaf', 'damaged_leaf']

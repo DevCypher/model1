@@ -1,0 +1,5 @@
+train: C:\Jeet\SIH\potato-dataset\images\train
+val: C:\Jeet\SIH\potato-dataset\images\val
+
+nc: 1
+names: ['potato']

@@ -1,0 +1,5 @@
+train: C:\Jeet\SIH\leaf2-dataset\images\train
+val: C:\Jeet\SIH\leaf2-dataset\images\val
+
+nc: 1
+names: ['leaf2']
