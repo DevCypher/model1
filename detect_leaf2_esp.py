@@ -1,10 +1,9 @@
-import requests
 import argparse
 import os
-import platform
 import sys
 from pathlib import Path
 
+import requests
 import torch
 
 FILE = Path(__file__).resolve()
@@ -13,26 +12,22 @@ if str(ROOT) not in sys.path:
     sys.path.append(str(ROOT))
 ROOT = Path(os.path.relpath(ROOT, Path.cwd()))
 
+from ultralytics.utils.plotting import Annotator, colors
+
 from models.common import DetectMultiBackend
-from utils.dataloaders import IMG_FORMATS, VID_FORMATS, LoadImages, LoadScreenshots, LoadStreams
+from utils.dataloaders import LoadImages, LoadStreams
 from utils.general import (
-    LOGGER,
-    check_file,
     check_img_size,
     check_imshow,
     cv2,
     increment_path,
     non_max_suppression,
     scale_boxes,
-    xyxy2xywh,
-    strip_optimizer,
-    colorstr
 )
 from utils.torch_utils import select_device, smart_inference_mode
-from ultralytics.utils.plotting import Annotator, colors
 
 # ESP32 configuration
-ESP32_IP = "192.168.108.54"   # replace with your ESP32 IP
+ESP32_IP = "192.168.108.54"  # replace with your ESP32 IP
 ESP32_ON = f"{ESP32_IP}/motor/on"
 ESP32_OFF = f"{ESP32_IP}/motor/off"
 
