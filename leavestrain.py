@@ -1,8 +1,9 @@
-import cv2
-import os
 import glob
+import os
 import shutil
 from random import shuffle
+
+import cv2
 
 # ----- CONFIG -----
 folder_path = input("Enter path to your leaf2 images folder: ")
@@ -29,6 +30,7 @@ shuffle(images)  # randomize order
 train_count = int(len(images) * train_ratio)
 train_images = images[:train_count]
 val_images = images[train_count:]
+
 
 def label_images(image_list, dataset_type):
     img_folder = os.path.join(output_folder, "images", dataset_type)
@@ -60,7 +62,7 @@ def label_images(image_list, dataset_type):
                 drawing[0] = True
             elif event == cv2.EVENT_MOUSEMOVE and drawing[0]:
                 temp = img.copy()
-                cv2.rectangle(temp, (x1y1[0], x1y1[1]), (x, y), (0,255,0), 2)
+                cv2.rectangle(temp, (x1y1[0], x1y1[1]), (x, y), (0, 255, 0), 2)
                 cv2.imshow("Image", temp)
             elif event == cv2.EVENT_LBUTTONUP:
                 drawing[0] = False
@@ -71,7 +73,7 @@ def label_images(image_list, dataset_type):
                 w_box = abs(x2 - x1y1[0]) / w_img
                 h_box = abs(y2 - x1y1[1]) / h_img
                 boxes.append((xc, yc, w_box, h_box))
-                cv2.rectangle(img, (x1y1[0], x1y1[1]), (x2, y2), (0,255,0), 2)
+                cv2.rectangle(img, (x1y1[0], x1y1[1]), (x2, y2), (0, 255, 0), 2)
                 cv2.imshow("Image", img)
 
         cv2.namedWindow("Image")
@@ -97,6 +99,7 @@ def label_images(image_list, dataset_type):
                 print("🚪 Labeling stopped.")
                 cv2.destroyAllWindows()
                 exit()
+
 
 # Run labeling
 label_images(train_images, "train")
